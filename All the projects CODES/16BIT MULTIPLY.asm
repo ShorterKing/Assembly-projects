@@ -1,0 +1,22 @@
+DATA SEGMENT
+    A DW 0122EH
+    B DW 0223AH
+    PRO_H DW ?
+    PRO_L DW ?
+    DATA ENDS
+
+CODE SEGMENT
+    ASSUME CS:CODE,DS:DATA
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV BX,A
+    MOV BX,B
+    MUL BX
+    SKIP: MOV PRO_L,AX
+    MOV PRO_H,DX
+    MOV AH,4CH
+    INT 21H
+    ; int 03h
+    CODE ENDS
+END START      
