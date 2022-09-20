@@ -1,0 +1,23 @@
+DATA SEGMENT
+     X DB 0AAH
+     Z DB 0AAH 
+     MULTI DB ?
+     CARRY DB 00H 
+     DATA ENDS 
+
+CODE SEGMENT 
+    ASSUME CS:CODE,DS:DATA 
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV AL,X
+    MOV AL,Z
+    MUL AL
+    JNC SKIP 
+    INC CARRY
+    SKIP:MOV MULTI,AL  
+    MOV AH, 4CH 
+    INT 21H
+     CODE ENDS 
+END START 
+    

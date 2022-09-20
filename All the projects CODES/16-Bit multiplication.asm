@@ -1,0 +1,24 @@
+; 16 BIT MULTIPLY  
+
+DATA SEGMENT 
+    X DW 0AAAAH    
+    Z DW 0AAAAH
+    MULTI DW ?
+    CARRY DB 00H 
+    DATA ENDS 
+
+CODE SEGMENT 
+    ASSUME CS:CODE, DS:DATA 
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV AX,X   
+    MOV AX,Z
+    MUL AX
+    JNC SKIP 
+    INC CARRY
+    SKIP: MOV MULTI, AX
+    MOV AH,4CH
+    INT 21H         
+    CODE ENDS 
+END START 
