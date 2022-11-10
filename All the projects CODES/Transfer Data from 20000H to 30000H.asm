@@ -1,0 +1,60 @@
+CODE SEGMENT
+    START:
+    ASSUME CS:CODE
+    MOV AX,2000H
+    MOV DS,AX
+    MOV AX,3000H
+    MOV ES,AX  
+    MOV SI,5000H
+    MOV DI,6000H
+    MOV [5000H],0BH
+    MOV [5001H],0B9H
+    MOV [5002H],0D5H
+    MOV [5003H],0E6H
+    MOV [5004H],055H
+    MOV [5005H],0E2H                           
+    MOV [5006H],029H
+    MOV [5007H],0EAH         
+    MOV ES:[6000H],0A9H
+    MOV ES:[6001H],0E6H
+    MOV ES:[6002H],0F2H
+    MOV ES:[6003H],055H
+    MOV ES:[6004H],077H
+    MOV ES:[6005H],078H
+    MOV ES:[6006H],0FAH
+    MOV ES:[6007H],0EFH    
+    MOV AX,4000H
+    MOV ES,AX
+    MOV SI,5000H
+    MOV DI,8000H
+    MOV CX,08H
+    CLD
+    REP MOVSB  
+    MOV SI,6000H
+    MOV DI,5000H
+    MOV CX,08H              
+    MOV AX,3000H
+    MOV DS,AX
+    MOV AX,2000H
+    MOV ES,AX 
+    MOV SI,6000H
+    MOV DI,5000H
+    MOV CX,08H
+    CLD
+    REP MOVSB 
+    MOV SI,8000H
+    MOV DI,6000H
+    MOV CX,08H     
+    MOV AX,4000H
+    MOV DS, AX
+    MOV AX,3000H
+    MOV ES, AX
+    MOV SI,8000H
+    MOV DI,6000H
+    MOV CX,08H
+    CLD
+    REP MOVSB   
+    MOV AH,4CH
+    INT 21H  
+    CODE ENDS
+END START
